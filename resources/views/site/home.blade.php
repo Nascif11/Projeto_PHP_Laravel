@@ -4,6 +4,40 @@
     {{-- IGNORE ---}}
 
     {{--isset($nome) ? $nome 'existe' : 'Não existe nome'--}}
-    {{$teste ?? 'padrão'}}
+ 
+ {{--$teste ?? 'padrão'--}}
+<div class="row">
+    @foreach($produtos as $produto)
+
+        <div class="col s12 m4">
+            <div class="card">
+
+                <div class="card-image">
+                    <img 
+                        <img src="{{ $produto->imagem }}" class="responsive-img">
+                    
+                </div>
+
+                <div class="card-content">
+                    <span class="card-title">
+                        {{ $produto->nome }}
+                    </span>
+
+                    <p>
+                        {{ Str::limit($produto->descricao, 20) }}
+                    </p>
+                </div>
+
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+
+            </div>
+        </div>
+
+    @endforeach
+</div>
+    
+
 
 @endsection
