@@ -15,7 +15,7 @@
                 <div class="card-image">
                     <img 
                         <img src="{{ $produto->imagem }}" class="responsive-img">
-                    
+                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                 </div>
 
                 <div class="card-content">
@@ -37,7 +37,9 @@
 
     @endforeach
 </div>
-    
+<div class="row">
+    {{$produtos->links('custom.pagination')}}
+</div>
 
 
 @endsection
