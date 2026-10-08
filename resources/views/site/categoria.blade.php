@@ -7,6 +7,8 @@
  
  {{--$teste ?? 'padrão'--}}
 <div class="row">
+
+    <h5>Categorias:{{$categoria->nome}}</h5>
     @foreach($produtos as $produto)
 
         <div class="col s12 m4">
@@ -37,8 +39,8 @@
 
     @endforeach
 </div>
-<div class="row">
-    {{$produtos->links('custom.pagination')}}
+<div class="row center">
+    
 </div>
 
 
