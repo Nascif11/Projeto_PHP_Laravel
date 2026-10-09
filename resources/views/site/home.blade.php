@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="card-action">
-                    <a href="#">This is a link</a>
+                    <a href="#">Esse é o link</a>
                 </div>
 
             </div>

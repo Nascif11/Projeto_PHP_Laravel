@@ -34,7 +34,7 @@
             <ul id="nav-mobile" class="left">
 
                 <li>
-                    <a href="/">Home</a>
+                    <a href="{{route('site.index')}}">Home</a>
                 </li>
 
                 <li>
