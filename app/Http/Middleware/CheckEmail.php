@@ -8,24 +8,21 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CheckEmail
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  Closure(Request): (Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
-    {    
-
-        if(!auth()->check()){
-            return redirect('login.form');
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login.form');
         }
+
         $email = auth()->user()->email;
-        $data= explode('@',$email);
-        $servidorEmail = $data[1];
+        $data = explode('@', $email);
+        $servidorEmail = $data[1] ?? '';
 
-        if($servidorEmail != 'gmail.com'){
-            return redirect('login.form');
+        if ($servidorEmail !== 'gmail.com') {
+            return redirect()->route('login.form')
+                ->with('error', 'Apenas usuários com Gmail podem acessar o painel.');
         }
+
         return $next($request);
     }
 }
