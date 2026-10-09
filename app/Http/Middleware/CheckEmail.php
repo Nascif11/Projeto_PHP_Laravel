@@ -18,10 +18,6 @@ class CheckEmail
         $data = explode('@', $email);
         $servidorEmail = $data[1] ?? '';
 
-        if ($servidorEmail !== 'gmail.com') {
-            return redirect()->route('login.form')
-                ->with('error', 'Apenas usuários com Gmail podem acessar o painel.');
-        }
 
         return $next($request);
     }
