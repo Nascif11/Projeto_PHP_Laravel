@@ -22,6 +22,12 @@
         @endforeach
     </ul>
 
+     <ul id='dropdown2' class='dropdown-content'>
+         
+        <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
+       
+    </ul>
+
 
     {{-- NAVBAR --}}
     <nav class="red">
@@ -47,6 +53,20 @@
                 <li>
                     <a href="">Carrinho</a>
                 </li>
+
+            </ul>
+            <ul id="nav-mobile" class="right">
+
+                
+
+                <li>
+                    <a href="#!" class="dropdown-trigger" data-target="dropdown2">
+                        Olá {{auth()->user()->name}}
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+
+            
 
             </ul>
 

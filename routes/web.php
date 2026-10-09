@@ -5,7 +5,7 @@ use App\Http\Controllers\ProdutoController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 Route::resource('produtos', ProdutoController::class);
 
 Route::get('/',[SiteController::class,'index'])->name('site.index');
