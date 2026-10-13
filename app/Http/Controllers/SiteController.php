@@ -22,15 +22,21 @@ class SiteController extends Controller
     public function details($slug){
         $produto = Produto::where('slug',$slug)->first();
         //Gate::authorize('ver-produto', $produto);
-        $this -> authorize ('verProduto',$produto)
-        return view('site.details',compact('produto'));
+        //$this -> authorize ('verProduto',$produto);
+        if(Gate::allows('ver-produto',$produto)){
+            return view('site.details',compact('produto'));
+        }
+        if(Gate::denies('ver-produto',$produto)){
+            return redirect()->route('site.index');
+        }
+       
     }
 
     public function categoria($id)
     {
     // 1. Pega os dados da Categoria (opcional, mas útil para mostrar o nome da categoria na tela)
       $categoria = Categoria::find($id);
-      $produtos = Produto::where('id_categoria', $id)->get(); // Pode usar ->get() no lugar de paginate(3) se não quiser paginação agora
+      $produtos = Produto::where('id_categoria', $id)->get();
       return view('site.categoria', compact('produtos', 'categoria'));
     }
 }
