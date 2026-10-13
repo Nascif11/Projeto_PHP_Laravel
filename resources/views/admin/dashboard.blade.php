@@ -10,7 +10,7 @@
 
     <nav class="red">
         <div class="nav-wrapper container ">
-            <a href="#" class="center brand-logo " href="index.html"><img src="img/logo.png"></a>          
+            <a href="#" class="center brand-logo " href="index.html"><img src="{{ asset('img/logo.png') }}" alt="Logo"></a>          
           <ul class="right ">                                 
               <li class="hide-on-med-and-down"><a href="#" onclick="fullScreen()"><i class="material-icons">settings_overscan</i> </a> </li>
               <li><a href="#" class="dropdown-trigger" data-target='dropdown2'>Olá{{auth()->user()->name}} <i class="material-icons right">expand_more</i> </a></li>     
@@ -23,7 +23,7 @@
     <ul id="slide-out" class="sidenav " >
       <li><div class="user-view">
         <div class="background red ">
-         <img src="{{asset('img/office.jpg')}} style="opacity: 0.5"> 
+         <img src="{{asset('img/office.jpg')}}" style="opacity: 0.5"> 
         </div>
           <a href="#user"><img class="circle" src={{asset('img/user.jpg')}}></a>
           <a href="#name"><span class="white-text name">John Doe</span></a>
@@ -52,7 +52,7 @@
           <article class="bg-gradient-blue card z-depth-4 ">
             <i class="material-icons">face</i>
             <p>Usuários</p>
-            <h3>34 </h3>           
+            <h3>{{$usuarios}}</h3>           
           </article>
           </div>
 
@@ -88,5 +88,64 @@
 
 
         </div>
-@endsction
+
+
+
+
+@push('graficos')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Gráfico 01: Aquisição de usuários
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ Js::from($userAno) }},
+            datasets: [{
+                label: {{ Js::from($userLabel) }},
+                data: {{ Js::from($userTotal) }},
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Gráfico 02: Produtos
+    const ctx2 = document.getElementById('myChart2');
+
+    new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: [{!! $catLabel !!}],
+            datasets: [{
+                label: 'Visitas',
+                data: [{{$catTotal}}],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 159, 64, 0.8)'
+                ]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+});
+</script>
+@endpush
+
 
