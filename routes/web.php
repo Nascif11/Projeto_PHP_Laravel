@@ -7,7 +7,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
-Route::resource('produtos', ProdutoController::class);
+//Route::resource('produtos', ProdutoController::class);
 
 Route::get('/',[SiteController::class,'index'])->name('site.index');
 
@@ -31,6 +31,4 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 Route::post('/users', [UserController::class, 'store'])->name('user.store');
 
-Route::get('/admin/produtos',function(){
-    return view ('admin.produtos');
-})->name('admin.produtos');
+Route::get('/admin/produtos',[ProdutoController::class, 'index'])->name('admin.produtos');
