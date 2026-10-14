@@ -32,3 +32,5 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/users', [UserController::class, 'store'])->name('user.store');
 
 Route::get('/admin/produtos',[ProdutoController::class, 'index'])->name('admin.produtos');
+
+Route::delete('/admin/produto/delete/{id}',[ProdutoController::class,'destroy'])->name('admin.delete');
