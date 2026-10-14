@@ -30,3 +30,7 @@ Route::get('/register', [LoginController::class, 'create'])->name('login.create'
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 Route::post('/users', [UserController::class, 'store'])->name('user.store');
+
+Route::get('/admin/produtos',function(){
+    return view ('admin.produtos');
+})->name('admin.produtos');
