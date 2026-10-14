@@ -100,10 +100,10 @@
 
                                 <a
                                     href="#delete-{{$produto->id}}"
-                                    class="btn-floating modal-trigger waves-effect waves-light red"
+                                    class="btn-floating modal-trigger  red"
                                     title="Excluir produto"
                                 >
-                                @include('admin.produtos.delete')   
+                                <i class="material-icons">delete</i>  
                                 </a>
                             </td>
                         </tr>
@@ -117,6 +117,9 @@
                 </tbody>
 
             </table>
+            @foreach ($produtos as $produto)
+              @include('admin.produtos.delete')
+            @endforeach
         </div>
 
         {{-- Paginação --}}
