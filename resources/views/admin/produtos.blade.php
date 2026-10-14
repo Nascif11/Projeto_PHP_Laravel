@@ -16,9 +16,11 @@
 
     {{-- Modal de cadastro de produto --}}
     @include('admin.produtos.create')
+  
 
     {{-- Listagem de produtos --}}
     <div class="row container crud">
+        
 
         {{-- Título --}}
         <div class="row titulo">
@@ -53,6 +55,7 @@
 
         {{-- Tabela --}}
         <div class="card z-depth-4 registros">
+            @include('admin.includes.mensagens')
             <table class="striped responsive-table">
 
                 <thead>
