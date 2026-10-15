@@ -1,42 +1,62 @@
-<div id="modal1" class="modal">
+<div id="create" class="modal">
         <div class="modal-content">
             <h4>
-                <i class="material-icons">card_giftcard</i>
+                <i class="material-icons">playlist_add_circle</i>
                 Novo produto
             </h4>
 
-            <form class="col s12">
+            <form action="{{route('admin.produtos.create')}}" method="POST" enctype="multipart/form-data" class="col s12">
+            @csrf
                 <div class="row">
 
                     <div class="input-field col s6">
                         <input
-                            placeholder="Nome do produto"
-                            id="first_name"
+                            name="nome"
+                            id="nome"
                             type="text"
                             class="validate"
                         >
-                        <label for="first_name">Nome</label>
+                        <label for="nome">Nome</label>
                     </div>
 
                     <div class="input-field col s6">
                         <input
-                            id="last_name"
+                            name="preco"
+                            id="preco"
                             type="number"
                             class="validate"
                         >
-                        <label for="last_name">Preço</label>
+                        <label for="preco">Preço</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input
+                            name="descricao"
+                            id="descricao"
+                            type="text"
+                            class="validate"
+                        >
+                        <label for="descricao">Descrição</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <select>
+                        <select name="categoria">
                             <option value="" disabled selected>
-                                Escolha uma categoria
+                                Escolha uma opção
                             </option>
-                            <option value="1">Eletrônicos</option>
-                            <option value="2">Informática</option>
-                            <option value="3">Acessórios</option>
+                            @foreach($produtos as $produto)
+                            <option value="{{$produto->categoria->id}}">{{$produto->categoria->nome}}</option>
+                            @endforeach
                         </select>
                         <label>Categoria</label>
+                    </div>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                          <span>Imagem</span>
+                          <input name="imagem" type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input class="file-path validate" type="text">
+                        </div>
                     </div>
 
                 </div>
@@ -47,8 +67,14 @@
                             href="#!"
                             class="modal-close waves-effect waves-green btn blue right"
                         >
-                            Cadastrar
+                            Cancelar
                         </a>
+                        <button
+                            type="submit"
+                            class=" waves-effect waves-green btn green right"
+                        >
+                            Cadastrar
+                        </button>
                     </div>
                 </div>
             </form>

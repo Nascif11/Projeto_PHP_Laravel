@@ -34,3 +34,8 @@ Route::post('/users', [UserController::class, 'store'])->name('user.store');
 Route::get('/admin/produtos',[ProdutoController::class, 'index'])->name('admin.produtos');
 
 Route::delete('/admin/produto/delete/{id}',[ProdutoController::class,'destroy'])->name('admin.delete');
+
+Route::get('/admin/produtos/create', [ProdutoController::class, 'create'])
+    ->name('admin.produtos.create');
+
+
