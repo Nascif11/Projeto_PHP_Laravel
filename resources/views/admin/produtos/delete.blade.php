@@ -21,7 +21,7 @@
         </a>
 
         <form
-            action="{{ route('admin.delete', $produto->id) }}"
+            action="{{ route('admin.produto.delete', $produto->id) }}"
             method="POST"
             style="display: inline-block; margin-left: 8px;"
         >
